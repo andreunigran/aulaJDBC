@@ -3,11 +3,17 @@ package br.unigran.model;
 
 import java.io.Serializable;
 import java.util.List;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  *
  * @author andre
  */
+@Getter @Setter
+@NoArgsConstructor
+
 public class Pessoa implements Serializable {
 
     private List<Contato> contatos;
@@ -16,39 +22,10 @@ public class Pessoa implements Serializable {
     
     private String nome;
 
-    public Pessoa() {
-    }
-
-    
-    public Pessoa(int id) {
-          this.id=id;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
+    public Pessoa(Integer id) {
         this.id = id;
     }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public List<Contato> getContatos() {
-        return contatos;
-    }
-
-    public void setContatos(List<Contato> contatos) {
-        this.contatos = contatos;
-    }
     
-
     @Override
     public String toString() {
         return getNome();

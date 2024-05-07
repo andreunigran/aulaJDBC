@@ -12,17 +12,17 @@ public class DaoContatos extends Dao{
     private DaoContatos(){
         
     }
-   public static void save(Pessoa pessoa) throws SQLException{
-    String sql = "INSERT INTO public.pessoa ( nome) " +
-        "VALUES(?);";
+   public static void save(Contato contato) throws SQLException{
+    String sql = "INSERT INTO public.contato ( informacao,pessoa_id) " +
+        "VALUES(?,?);";
         PreparedStatement prepareStatement = getConn().prepareStatement(sql);
-        prepareStatement.setString(1, pessoa.getNome());
+        prepareStatement.setString(1, contato.getInformacao());
+        prepareStatement.setInt(2,  contato.getPessoa().getId());
         prepareStatement.execute();
         getConn().close();
-   
    } 
-   public static List getPessoas() throws SQLException{
-         String sql= "select id,nome,pessoa_id from public.contato;";
+   public static List getContatos() throws SQLException{
+         String sql= "select * from public.contato ";
         PreparedStatement prepareStatement = getPreStatement(sql);
         List retorno = new LinkedList();
       
